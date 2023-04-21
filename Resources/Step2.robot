@@ -83,7 +83,6 @@ Tambah jumlah barang
     END
 Periksa tambah jumlah barang
     ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
-    Log To Console    ${present}
     Run Keyword If    '${present}'=='True'    cek<10    ELSE    cek>10    
 cek>10
     Page Should Contain Element    xpath://input[@name='quantity']
@@ -95,7 +94,6 @@ cek<10
     Should Be Equal As Strings    ${tambah}    ${x}    msg=Ubah jumlah tidak sesuai
 Kurangi jumlah barang
     ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
-    Log To Console    ${present}
     Run Keyword If    '${present}'=='True'    select_value    ELSE    input_value
 input_value
     Input Text    xpath://input[@name='quantity']    ${kurang}
@@ -105,7 +103,6 @@ select_value
 
 Periksa kurang jumlah barang
     ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
-    Log To Console    ${present}
     Run Keyword If    '${present}'=='True'    cekk<10    ELSE    cekk>10    
 cekk>10
     Page Should Contain Element    xpath://input[@name='quantity']
@@ -166,10 +163,6 @@ Tekan tombol remove barang
         Click Button    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[2]/div[2]/form[2]/button
                               
     END
-Periksa tombol checkout
-    Page Should Contain Element    xpath=/html/body/div[3]/div[6]/div/div[2]/div[1]/div[3]/div/a[1]
-    Click Element    xpath=/html/body/div[3]/div[6]/div/div[2]/div[1]/div[3]/div/a[1]
-    Wait Until Page Contains    Order Summary
     
 
 

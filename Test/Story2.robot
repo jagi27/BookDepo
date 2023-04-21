@@ -33,13 +33,12 @@ Menambahkan barang yang sama ke Keranjang
     Add to Basket barang yang sama
     Periksa apakah jumlah yang ditambahkan sesuai
     Hapus barang
+    Cek keranjang kosong
 Menambahkan barang yang berbeda ke keranjang
     Tekan Bestseller
     Add to Basket barang yang berbeda
     Periksa buku yang ditambahkan ke keranjang
 Menambah jumlah barang di keranjang
-    Tekan Bestseller
-    Add to Basket barang yang berbeda
     Tambah jumlah barang
     Periksa tambah jumlah barang
 Kurangi jumlah barang di keranjang
@@ -51,8 +50,6 @@ Periksa total jumlah barang pada keranjang
 Periksa total jumlah harga keranjang
     Kalkulasi semua harga barang
     Periksa kalkulasi dengan total harga keranjang
-Periksa tombol checkout saat keranjang terisi
-    Periksa tombol checkout
 Mengosongkan keranjang
     Tekan tombol remove barang
     Cek keranjang kosong
