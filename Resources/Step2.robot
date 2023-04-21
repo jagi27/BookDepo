@@ -128,14 +128,16 @@ Kalkulasi semua jumlah barang
     Set Global Variable    ${jumlah_list}   
     ${raw}     Create List    
     FOR    ${i}    IN RANGE    2    ${qty}+2
-        ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
-        Log To Console    ${present}
-        Run Keyword If    '${present}'=='True'    get_select_value(${i})    ELSE    get_input_value(${i})
+        ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[${i}]/div[2]/form[1]/input[4]
+        Run Keyword If    '${present}'=='True'    get_input_value(${i})    ELSE    get_select_value(${i})
     END
-    Log To Console    ${jumlah_list}
-    ${sum}   Evaluate    sum(map(int, ${jumlah_list}))
-    Set Global Variable    ${sum}
-    Log To Console    ${sum}
+    ${sumx}   Evaluate    sum(map(int, ${jumlah_list}))
+    Set Global Variable    ${sumx}
+Periksa kalkulasi dengan total jumlah barang keranjang
+    ${total}   Get Text    xpath://div[@class='basket-msg']
+    ${q}   Get Text    xpath=/html/body/div[3]/div[6]/div/div[2]/div[1]/div[2]/dl[2]/dd
+    ${xy}    Set Variable    You have ${sumx} items for a total of ${q} in your basket.
+    Should Be Equal    ${total}    ${xy}
 Kalkulasi semua harga barang
     ${list}    Create List   
     ${raw}     Create List    
@@ -158,7 +160,16 @@ Periksa kalkulasi dengan total harga keranjang
     ${z}    Convert To Integer    ${z}
     ${xy}     Set Variable    ${z}
     Should Be Equal    ${sum}    ${xy}
-
+Tekan tombol remove barang
+    FOR    ${i}    IN RANGE    2    ${qty}+2
+        Page Should Contain Button    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[2]/div[2]/form[2]/button
+        Click Button    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[2]/div[2]/form[2]/button
+                              
+    END
+Periksa tombol checkout
+    Page Should Contain Element    xpath=/html/body/div[3]/div[6]/div/div[2]/div[1]/div[3]/div/a[1]
+    Click Element    xpath=/html/body/div[3]/div[6]/div/div[2]/div[1]/div[3]/div/a[1]
+    Wait Until Page Contains    Order Summary
     
 
 
