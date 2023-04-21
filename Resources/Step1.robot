@@ -64,8 +64,8 @@ Check Sorting High to Low
     ${copy}    Copy List    ${list}
     Sort List    ${list}
     Reverse List    ${list}
-    #  Log To Console    ${list} 
-    #  Log To Console    ${copy}
+     Log To Console    ${list} 
+     Log To Console    ${copy}
     Lists Should Be Equal    ${copy}    ${list}    msg=Harga tidak tersortir dari tinggi ke rendah
 
     
