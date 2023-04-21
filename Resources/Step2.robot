@@ -114,6 +114,23 @@ cekk<10
     Page Should Contain Element    xpath://select[@name='quantity']
     ${x}   Get Value     xpath://select[@name='quantity']
     Should Be Equal As Strings    ${kurang}    ${x}    msg=Ubah jumlah tidak sesuai
+Kalkulasi semua jumlah barang
+    ${list}    Create List   
+    ${raw}     Create List    
+    FOR    ${i}    IN RANGE    2    ${qty}+2
+        ${price}   Get Text     xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[${i}]/div[2]/p
+        Append To List    ${raw}    ${price}
+    END
+
+    FOR    ${x}    IN    @{raw}
+        ${price}    Remove String        ${x}   Rp    .
+        ${price}    Convert To Integer    ${price}
+        ${y}     Set Variable    ${price}
+        Append To List    ${list}    ${y}
+    END
+    ${sum}   Evaluate    sum(map(int, ${list}))
+    Set Global Variable    ${sum}
+
 Kalkulasi semua harga barang
     ${list}    Create List   
     ${raw}     Create List    
