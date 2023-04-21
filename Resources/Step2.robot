@@ -130,6 +130,7 @@ Kalkulasi semua jumlah barang
     END
     ${sum}   Evaluate    sum(map(int, ${list}))
     Set Global Variable    ${sum}
+    Log To Console    ${sum}
 
 Kalkulasi semua harga barang
     ${list}    Create List   
