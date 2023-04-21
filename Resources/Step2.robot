@@ -102,6 +102,7 @@ input_value
     Click Button    xpath://button[@class="btn update-btn"]
 select_value
     Select From List By Value    name=quantity    ${kurang}
+
 Periksa kurang jumlah barang
     ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
     Log To Console    ${present}
@@ -114,23 +115,27 @@ cekk<10
     Page Should Contain Element    xpath://select[@name='quantity']
     ${x}   Get Value     xpath://select[@name='quantity']
     Should Be Equal As Strings    ${kurang}    ${x}    msg=Ubah jumlah tidak sesuai
+get_select_value(${i})
+    Page Should Contain Element    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[${i}]/div[2]/form[1]/select
+    ${x}   Get Value     xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[${i}]/div[2]/form[1]/select
+    Append To List    ${jumlah_list}    ${x}
+get_input_value(${i})
+    Page Should Contain Element    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[${i}]/div[2]/form[1]/input[4]
+    ${x}   Get Value     xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[${i}]/div[2]/form[1]/input[4]
+    Append To List    ${jumlah_list}    ${x}
 Kalkulasi semua jumlah barang
-    ${list}    Create List   
+    ${jumlah_list}    Create List
+    Set Global Variable    ${jumlah_list}   
     ${raw}     Create List    
     FOR    ${i}    IN RANGE    2    ${qty}+2
-        ${price}   Get Text     xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[${i}]/div[2]/p
-        Append To List    ${raw}    ${price}
+        ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
+        Log To Console    ${present}
+        Run Keyword If    '${present}'=='True'    get_select_value(${i})    ELSE    get_input_value(${i})
     END
-
-    FOR    ${x}    IN    @{raw}
-        ${price}    Remove String        ${x}   Rp    .
-        ${price}    Convert To Integer    ${price}
-        ${y}     Set Variable    ${price}
-        Append To List    ${list}    ${y}
-    END
-    ${sum}   Evaluate    sum(map(int, ${list}))
+    Log To Console    ${jumlah_list}
+    ${sum}   Evaluate    sum(map(int, ${jumlah_list}))
     Set Global Variable    ${sum}
-
+    Log To Console    ${sum}
 Kalkulasi semua harga barang
     ${list}    Create List   
     ${raw}     Create List    

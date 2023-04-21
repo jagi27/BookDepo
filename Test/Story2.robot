@@ -46,7 +46,7 @@ Menambah jumlah barang di keranjang
 #     Kurangi jumlah barang
 #     Periksa kurang jumlah barang
 Periksa total jumlah barang pada keranjang
-    
-Periksa total jumlah harga keranjang
-    Kalkulasi semua harga barang
-    Periksa kalkulasi dengan total harga keranjang
+    Kalkulasi semua jumlah barang
+# Periksa total jumlah harga keranjang
+#     Kalkulasi semua harga barang
+#     Periksa kalkulasi dengan total harga keranjang
