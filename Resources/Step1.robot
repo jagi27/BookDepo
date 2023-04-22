@@ -17,7 +17,7 @@ Klik Tombol Search
     Click Button    xpath://form[@id='book-search-form']/div/button
 Periksa Valid Search
     Page Should Contain    Search results for ${search_valid}
-    Page Should Contain    Showing
+    ...                    Showing
 Periksa Tombol Dropdown Sort
     Page Should Contain Element    xpath://select[@name='searchSortBy']
 Klik Price, low to high

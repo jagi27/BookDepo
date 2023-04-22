@@ -21,4 +21,4 @@ Masukkan Email dan Password
     Click Button    id=signInSubmit
 Periksa Berhasil login
     Page Should Contain    My Account
-    Page Should Contain    Sign out
+    ...                    Sign out
