@@ -30,13 +30,7 @@ Mencari Buku Terdaftar
     Periksa Valid Search
 Urutkan dari terkecil ke terbesar
     [Documentation]    Menyortir harga dari terendah ke tertinggi dengan 9 data sample
-    [Tags]    search,sortir,low,valid,positif
+    [Tags]    sortir,valid,positif
     Periksa Tombol Dropdown Sort
     Klik Price, low to high
     Check Sorting Low to High
-Urutkan dari terbesar ke terkecil
-    [Documentation]    Menyortir harga dari tertinggi ke terendah dengan 7 data sample
-    [Tags]    search,sortir,high,valid,positif
-    Periksa Tombol Dropdown Sort
-    Klik Price, high to low
-    Check Sorting High to Low

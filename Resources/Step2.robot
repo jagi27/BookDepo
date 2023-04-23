@@ -157,12 +157,6 @@ Periksa kalkulasi dengan total harga keranjang
     ${z}    Convert To Integer    ${z}
     ${xy}     Set Variable    ${z}
     Should Be Equal    ${sum}    ${xy}
-Tekan tombol remove barang
-    FOR    ${i}    IN RANGE    2    ${qty}+2
-        Page Should Contain Button    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[2]/div[2]/form[2]/button
-        Click Button    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[2]/div[2]/form[2]/button
-                              
-    END
     
 
 

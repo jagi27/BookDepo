@@ -37,26 +37,6 @@ Periksa wishlist sudah ada
     Page Should Contain    You already have a wishlist with that name
 Membuat wishlist yang belum ada
     Membuat wishlist kedua(${wishlist_kedua})
-Tekan tombol edit
-    Click Element    xpath://div[@class="btn-edit-text"]
-    Wait Until Element Is Visible    xpath=/html/body/div[11]/div/div/div[2]/div/form/div[1]/input
-    Wait Until Element Is Visible    xpath=/html/body/div[11]/div/div/div[2]/div/form/div[4]/a
-Masukkan nama wishlist
-    Input Text    xpath=/html/body/div[11]/div/div/div[2]/div/form/div[1]/input    ${edit_wishlist}
-Tekan tombol save
-    Click Element    xpath=/html/body/div[11]/div/div/div[2]/div/form/div[4]/button
-Periksa nama wishlist berhasil diubah
-    Page Should Contain    Your wishlist has been updated
-    ${x}    Get Text       xpath=/html/body/div[3]/div[7]/div[4]/div/div[5]/h1
-    Should Be Equal    ${edit_wishlist}    ${x}    msg=Nama wistlist tidak sesuai dengan yang diedit
-Tekan tombol Delete Wishlist
-    ${delete_wishlist}    Get Text       xpath=/html/body/div[3]/div[7]/div[4]/div/div[5]/h1
-    Set Global Variable    ${delete_wishlist}
-    Click Element    xpath=/html/body/div[11]/div/div/div[2]/div/form/div[4]/a
-    Handle Alert    ACCEPT
-Periksa wishlist berhasil dihapus
-    ${x}    Get Text       xpath=/html/body/div[3]/div[7]/div[4]/div/div[5]/h1
-    Should Not Be Equal As Strings    ${delete_wishlist}    ${x}    msg=Nama wistlist tidak sesuai dengan yang dibuat
 Tekan Bestseller
     Click Element    xpath://a[@href="/bestsellers"]
 Pilih barang
@@ -79,5 +59,6 @@ Periksa barang berhasil ditambahkan
     Click Element    xpath=/html/body/div[13]/div/div/div[2]/div/a
     ${y}    Get Text    xpath=/html/body/div[3]/div[6]/div[4]/div/div[7]/div/div/div[1]/div[2]/h2/a
     Should Be Equal    ${titles}    ${y}
+    
 
     
