@@ -8,12 +8,13 @@ Variables    Variables.py
 
 *** Keywords ***
 Tekan Tombol Wishlist
+    Sleep    2
     Click Element    xpath=/html/body/div[3]/div[1]/div/ul[2]/li[3]/a
 Periksa pernah membuat wishlist atau belum
     ${cek_wishlist}  Run Keyword And Return Status    Page Should Contain    You don't have any wishlist yet.
     Set Global Variable    ${cek_wishlist}
 Membuat wishlist
-    Run Keyword If    '${cek_wishlist}'=='True'    Membuat wishlist pertama    ELSE    Membuat wishlist kedua(${wishlist_pertama})
+    Run Keyword If    ${cek_wishlist}==True    Membuat wishlist pertama    ELSE    Membuat wishlist kedua(${wishlist_pertama})
 Membuat wishlist pertama
     Click Element    xpath://a[@class="create-wishlist"]
     Page Should Contain    Create new wishlist

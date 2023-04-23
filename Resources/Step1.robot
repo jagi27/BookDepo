@@ -27,10 +27,24 @@ Klik Price, high to low
 Check Sorting Low to High  
     ${list}    Create List   
     ${raw}     Create List    
-
     FOR    ${i}    IN RANGE    1    ${data_sample}+1
-        ${price}   Get Text     xpath=/html/body/div[3]/div[6]/div[5]/div[4]/div/div/div/div/div[${i}]/div[2]/div[2]/p/span
-        Append To List    ${raw}    ${price}
+         ${status}    Run Keyword And Return Status    Page Should Contain Element     xpath=/html/body/div[3]/div[6]/div[5]/div[4]/div/div/div/div/div[${i}]/div[2]/div[2]/p/span
+         Log To Console    ${status} 
+         IF    ${status} == True
+            ${price}   Get Text     xpath=/html/body/div[3]/div[6]/div[5]/div[4]/div/div/div/div/div[${i}]/div[2]/div[2]/p/span
+            Log To Console    ${price} 
+            Append To List    ${raw}    ${price}
+        ELSE
+            ${status2}    Run Keyword And Return Status    Page Should Contain Element     xpath=/html/body/div[3]/div[6]/div[5]/div[4]/div/div/div/div/div[${i}]/div[2]/div[2]/p[1]/span[1]
+            Log To Console    ${status}
+            IF    ${status2} == True
+                ${price}   Get Text     xpath=/html/body/div[3]/div[6]/div[5]/div[4]/div/div/div/div/div[${i}]/div[2]/div[2]/p[1]/span[1]
+                Log To Console    ${price}
+                Append To List    ${raw}    ${price}
+            END
+         END
+        # ${price}   Get Text     xpath=/html/body/div[3]/div[6]/div[5]/div[4]/div/div/div/div/div[${i}]/div[2]/div[2]/p/span
+        # Append To List    ${raw}    ${price}
     END
 
     FOR    ${x}    IN    @{raw}
@@ -45,5 +59,3 @@ Check Sorting Low to High
     #  Log To Console    ${list} 
     #  Log To Console    ${copy}
     Lists Should Be Equal    ${copy}    ${list}    msg=Harga tidak tersortir dari rendah ke tinggi
-
-    

@@ -1,5 +1,5 @@
 *** Settings ***
-
+Documentation    Wishlist
 Library    SeleniumLibrary
 Library    BuiltIn
 Resource    ../Resources/Main.robot

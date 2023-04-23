@@ -83,7 +83,7 @@ Tambah jumlah barang
     END
 Periksa tambah jumlah barang
     ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
-    Run Keyword If    '${present}'=='True'    cek<10    ELSE    cek>10    
+    Run Keyword If    ${present}==True    cek<10    ELSE    cek>10    
 cek>10
     Page Should Contain Element    xpath://input[@name='quantity']
     ${x}   Get Value     xpath://input[@name='quantity']
@@ -94,7 +94,7 @@ cek<10
     Should Be Equal As Strings    ${tambah}    ${x}    msg=Ubah jumlah tidak sesuai
 Kurangi jumlah barang
     ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
-    Run Keyword If    '${present}'=='True'    select_value    ELSE    input_value
+    Run Keyword If    ${present}==True    select_value    ELSE    input_value
 input_value
     Input Text    xpath://input[@name='quantity']    ${kurang}
     Click Button    xpath://button[@class="btn update-btn"]
@@ -103,7 +103,7 @@ select_value
 
 Periksa kurang jumlah barang
     ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath://select[@id='Qty_0']
-    Run Keyword If    '${present}'=='True'    cekk<10    ELSE    cekk>10    
+    Run Keyword If    ${present}==True    cekk<10    ELSE    cekk>10    
 cekk>10
     Page Should Contain Element    xpath://input[@name='quantity']
     ${x}   Get Value     xpath://input[@name='quantity']
@@ -126,7 +126,7 @@ Kalkulasi semua jumlah barang
     ${raw}     Create List    
     FOR    ${i}    IN RANGE    2    ${qty}+2
         ${present}  Run Keyword And Return Status    Element Should Be Visible    xpath=/html/body/div[3]/div[6]/div/div[2]/div[2]/div[${i}]/div[2]/form[1]/input[4]
-        Run Keyword If    '${present}'=='True'    get_input_value(${i})    ELSE    get_select_value(${i})
+        Run Keyword If    ${present}==True    get_input_value(${i})    ELSE    get_select_value(${i})
     END
     ${sumx}   Evaluate    sum(map(int, ${jumlah_list}))
     Set Global Variable    ${sumx}
