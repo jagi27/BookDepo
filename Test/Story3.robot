@@ -33,6 +33,10 @@ Mengubah nama wishlist dengan nama yang belum ada
     Masukkan nama wishlist
     Tekan tombol save
     Periksa nama wishlist berhasil diubah
+Menghapus wishlist
+    Tekan tombol edit
+    Tekan tombol Delete Wishlist
+    Periksa wishlist berhasil dihapus
 # Menambah barang ke wishlist
 #     Tekan Bestseller
-#     Pilih barang{${barang_berbeda}}
+#     Pilih barang
