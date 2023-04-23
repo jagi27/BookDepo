@@ -59,4 +59,26 @@ Periksa wishlist berhasil dihapus
     Should Not Be Equal As Strings    ${delete_wishlist}    ${x}    msg=Nama wistlist tidak sesuai dengan yang dibuat
 Tekan Bestseller
     Click Element    xpath://a[@href="/bestsellers"]
+Pilih barang
+    ${titles}    Get Text    xpath=/html/body/div[3]/div[6]/div[2]/div[2]/div/div/div/div/div[1]/div[2]/h3/a
+    Set Global Variable    ${titles}
+    Click Element    xpath=/html/body/div[3]/div[6]/div[2]/div[2]/div/div/div/div/div[1]/div[2]/h3/a
+Tekan tombol Add to Wishlist
+    Wait Until Element Is Visible    xpath=/html/body/div[3]/div[6]/div[7]/div/div[1]/div[1]/div[3]/div/div[3]/a[2]
+    Click Element    xpath=/html/body/div[3]/div[6]/div[7]/div/div[1]/div[1]/div[3]/div/div[3]/a[2]
+Pilih wishlist
+    Sleep    3
+    # Select From List By Index    xpath://select[@id="select-wishlists"]    ${select_wishlist}
+    Click Element   xpath://select[@id="select-wishlists"]
+    Select From List By Index    xpath://select[@id="select-wishlists"]    ${select_wishlist}
+    ${nama_wishlist}    Get Selected List Label    xpath=/html/body/div[13]/div/div/div[2]/div/div/div[2]/form/div[1]/select
+    Set Global Variable    ${nama_wishlist}
+    Click Element    xpath=/html/body/div[13]/div/div/div[2]/div/div/div[2]/form/div[2]/button
+Periksa barang berhasil ditambahkan
+    Sleep    3
+    Page Should Contain    Item added to ${nama_wishlist}
+    Click Element    xpath=/html/body/div[13]/div/div/div[2]/div/a
+    ${y}    Get Text    xpath=/html/body/div[3]/div[6]/div[4]/div/div[7]/div/div/div[1]/div[2]/h2/a
+    Should Be Equal    ${titles}    ${y}
+
     
