@@ -28,5 +28,11 @@ Membuat wishlist yang sudah ada
 Membuat wishlist yang belum ada
     Membuat wishlist yang belum ada
     Periksa wishlist berhasil dibuat(${wishlist_kedua})
-
-
+Mengubah nama wishlist dengan nama yang belum ada
+    Tekan tombol edit
+    Masukkan nama wishlist
+    Tekan tombol save
+    Periksa nama wishlist berhasil diubah
+# Menambah barang ke wishlist
+#     Tekan Bestseller
+#     Pilih barang{${barang_berbeda}}
