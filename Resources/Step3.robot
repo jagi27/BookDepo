@@ -68,7 +68,6 @@ Tekan tombol Add to Wishlist
     Click Element    xpath=/html/body/div[3]/div[6]/div[7]/div/div[1]/div[1]/div[3]/div/div[3]/a[2]
 Pilih wishlist
     Sleep    3
-    # Select From List By Index    xpath://select[@id="select-wishlists"]    ${select_wishlist}
     Click Element   xpath://select[@id="select-wishlists"]
     Select From List By Index    xpath://select[@id="select-wishlists"]    ${select_wishlist}
     ${nama_wishlist}    Get Selected List Label    xpath=/html/body/div[13]/div/div/div[2]/div/div/div[2]/form/div[1]/select
